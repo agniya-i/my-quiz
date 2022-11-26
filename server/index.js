@@ -21,7 +21,7 @@ app.use('/user', userRoutes);
 app.use('/sets', setsRoutes);
 app.use('/favourites', favouritesRoutes);
 
-mongoose.connect("mongodb+srv://agniya:1234@cluster0.437dm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+mongoose.connect("", {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
