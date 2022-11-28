@@ -1,0 +1,47 @@
+.FolderPage {
+
+    .page-header {
+        padding: 40px 50px 15px;
+        background-color: #f3f3f3;
+
+
+        &__title {
+            font-size: 20px;
+            margin-bottom: 10px;
+
+        }
+
+        &__options {
+            display: flex;
+
+
+            &-item {
+                margin-right: 10px;
+                width: 22px;
+                height: 22px;
+                opacity: 0.7;
+                cursor: pointer;
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+            &--add {
+                background-image: url('../../../img/icons/add.png');
+            }
+
+            &--edit {
+                background-image: url('../../../img/icons/pencil.png');
+            }
+
+            &--favourites {
+                background-image: url('../../../img/icons/favorite-folders-2.png');
+                filter: brightness(0);
+            }
+        }
+    }
+
+    .sets-list {
+        padding: 50px;
+    }
+}

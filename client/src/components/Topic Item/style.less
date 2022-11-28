@@ -1,0 +1,90 @@
+@import '../../assets/mixins/media.less';
+
+.topic-item {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    height: 150px;
+    width: 25%;
+    padding: 15px 30px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-family: 'Roboto Mono';
+    margin-right: 30px;
+
+    -webkit-box-shadow: 1px 1px 9px -4px rgb(34, 60, 80, 0.2);
+    -moz-box-shadow: 1px 1px 9px -4px rgb(34, 60, 80, 0.2);
+    box-shadow: 3px 3px 0px 0px rgb(34, 60, 80, 0.2);
+    border: 1px solid #000;
+
+    @media screen and(max-width: 1000px) {
+        width: 50%;
+    }
+
+    &__title {
+        font-size: 16px;
+        color: @primary-blue;
+        transition: 0.2s;
+
+        &:hover {
+            font-weight: 700;
+
+        }
+    }
+
+    &__quantity {
+        color: rgb(116, 116, 116);
+        font-size: 12px;
+    }
+
+    &__options {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        z-index: 10;
+
+
+        &-icon {
+            width: 20px;
+            height: 20px;
+            background-image: url('../../img/icons/more.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        &-delete {
+            cursor: pointer;
+            position: absolute;
+            display: flex;
+            right: 0;
+            border: 1px solid #000;
+            background-color: #fff;
+            padding: 10px 20px;
+            font-size: 13px;
+            align-items: center;
+            border-radius: 10px;
+            color: #d9536b;
+            margin-top: 3px;
+
+            &::before {
+                content: "";
+                display: block;
+                width: 15px;
+                height: 15px;
+                background-image: url('../../img/icons/remove-hoover.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                margin-right: 5px;
+
+
+            }
+
+        }
+
+    }
+
+}
