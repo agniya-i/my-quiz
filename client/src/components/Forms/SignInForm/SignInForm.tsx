@@ -83,7 +83,6 @@ const SignInForm: FC<Props> = ({ onOpenSingUp }) => {
                 />
             </form>
             <GoogleLogin
-                // clientId="3601760083-ko6lv0hq77pco0pevq6g3vp5692tfoga.apps.googleusercontent.com"
                 clientId={clientId}
                 render={(rednerProps) => (
                     <button className="google-btn" onClick={rednerProps.onClick}>
