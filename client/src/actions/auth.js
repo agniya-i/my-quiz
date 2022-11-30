@@ -3,7 +3,7 @@ import { AUTH } from '../constants/actionTypes';
 import api from "../api/profile";
 
 // return async function 
-export const signUp = (formData, history) => async (dispatch) => {
+export const signUp = (formData, navigation) => async (dispatch) => {
 
     try {
         const { data } = await api.signUp(formData);
@@ -12,13 +12,13 @@ export const signUp = (formData, history) => async (dispatch) => {
 
         dispatch({ type: AUTH, data })
 
-        history.push('/dashboard');
+        navigation('/dashboard');
     } catch (e) {
         console.error(e);
     }
 }
 
-export const signIn = (formData, history) => async (dispatch) => {
+export const signIn = (formData, navigation) => async (dispatch) => {
 
     try {
         const { data } = await api.signIn(formData);
@@ -27,7 +27,7 @@ export const signIn = (formData, history) => async (dispatch) => {
 
         dispatch({ type: AUTH, data })
 
-        history.push('/dashboard');
+        navigation('/dashboard');
     } catch (e) {
         console.error(e);
     }

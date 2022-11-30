@@ -1,15 +1,18 @@
 import React, { FC, useState } from 'react';
 import './style.less';
 import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import googleLogo from '../../../img/icons/google-symbol.png';
 import Input from '../../UI Components/Input/Input';
 import Button from '../../UI Components/Button/Button';
 import { signIn } from '../../../actions/auth';
+import { useAppDispatch } from '../../../hooks/useTypedSelector';
 
-const clientId: string = (process.env.GOOGLE_LOGIN_CLIENT_ID as string);
 
+// const clientId: string = (process.env.GOOGLE_LOGIN_CLIENT_ID as string);
+
+const clientId = "3601760083-ko6lv0hq77pco0pevq6g3vp5692tfoga.apps.googleusercontent.com";
 type Props = {
     onOpenSingUp: () => void;
 } 
@@ -22,11 +25,10 @@ const initialState = {
 const SignInForm: FC<Props> = ({ onOpenSingUp }) => {
     const [userData, setUserData] = useState(initialState);
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigation = useNavigate();
 
     async function googleSuccess(res: GoogleLoginResponse | GoogleLoginResponseOffline) {
-
         let result, token;
         if ("profileObj" in res) { result = res.profileObj; }
         if ("tokenId" in res) { token = res.tokenId; }

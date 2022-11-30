@@ -1,8 +1,13 @@
 
 import React, { FC } from "react";
+import { useNavigate } from "react-router-dom";
+import FolderList from "../../components/Lists/FoldersList/FoldersList";
+import SetsList from "../../components/Lists/SetsList/SetsList";
+
 import './Dashboard.less';
 
 const Dashboard: FC = () => {
+    const navigation = useNavigate();
 
     return (
         <div className="pageWrapper">
@@ -11,24 +16,23 @@ const Dashboard: FC = () => {
                 <div className="dashboard-section">
                     <div className="dashboard-section__top">
                         <h2 className="dashboard-section__title">Folders</h2>
-                        {/* <a onClick={handleFoldersListOpen}>See All</a> */}
+                        <button onClick={() => navigation('/folders')}>See All</button>
                     </div>
                     <div className="dashboard-section__bottom">
-                        {/* <FolderList /> */}
+                        <FolderList />
                     </div>
                 </div>
                 <div className="dashboard-section">
                     <div className="dashboard-section__top">
                         <h2 className="dashboard-section__title">Sets</h2>
-                        <a href="">See All</a>
+                        <button onClick={() => navigation('/sets')}>See All</button>
                     </div>
                     <div className="dashboard-section__bottom">
-                        {/* <SetsList /> */}
+                        <SetsList />
                     </div>
                 </div>
-
-            </div >
-        </div >
+            </div>
+        </div>
     )
 
 }

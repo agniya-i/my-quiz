@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { FC,useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
 import { deleteSet } from '../../actions/sets';
+import { IFolder, ISet } from '../../types/types';
 import './style.less';
 
 
+type Props ={
+    topic: IFolder| ISet | null,
+    type: string
+}
 
-export default function TopicItem({ topic, type }) {
-
-    const history = useHistory();
+const TopicItem: FC<Props> = ({ topic, type }) => {
     const [isOpenOption, setIsOpenOption] = useState(false);
     const dispatch = useDispatch();
 
@@ -45,3 +47,6 @@ export default function TopicItem({ topic, type }) {
         </div>
     );
 }
+
+
+export default TopicItem;

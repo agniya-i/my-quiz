@@ -2,8 +2,9 @@ import React, { FC, useState } from 'react';
 import Button from '../../UI Components/Button/Button';
 import Input from '../../UI Components/Input/Input';
 import { signUp } from '../../../actions/auth';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../hooks/useTypedSelector';
 import './style.less';
 
 type FormData = {
@@ -22,7 +23,7 @@ const initialState = {
 
 const SignUpForm: FC = () => {
     const [formData, setFormData] = useState<FormData>(initialState);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {

@@ -13,6 +13,7 @@ const Auth: React.FC = () => {
 
     return (
         <div className="auth-form-wrapper">
+            {/* <SignUpForm /> */}
             {
                 isSignUp ?
                     <SignUpForm /> :
