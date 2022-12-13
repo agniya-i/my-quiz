@@ -2,8 +2,8 @@
   box-sizing: border-box;
 }
 
-.App{
-  padding: 30px 50px;
+body{
+  font-family: 'Rubik', sans-serif;
 }
 
 .heading .heading__title{
@@ -14,9 +14,11 @@
 .heading .heading__icon{
   font-size: 56px;
 }
+
 .input-wrapper{
   margin-top: 30px;
 }
+
 .input-wrapper .input__box{
     border: 0;
     border-bottom: 1px solid #d8d8d8;
@@ -38,131 +40,12 @@
     display: none;
 }
 
-.list{
-  margin-top: 20px;
-  display: flex;
-}
-
-.list .column{
-  margin-right: 50px;
-  min-width: 350px;
-}
-
 .settings{
   display: flex;
   justify-content: space-between;
 }
 
-.list .todo{
-    width: 350px;
-    padding: 20px 15px;
-    border-radius: 5px;
-    box-shadow: 1px 3px 5px -4px #d8d5d5;
-    margin-bottom: 15px;
-    border: 1px solid #ececec;
-    font-size: 15px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+textarea:focus, input:focus{
+    outline: none;
 }
 
-.icon{
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-}
-
-.todo-title > input{
-  border: 0; 
-  padding: 2px;
-  font-size: 14px;
-}
-
-.todo-title > input:focus{
-  border: 0; 
-  border-bottom: 1px solid #979797;
-  outline: none;
-}
-
-.column-header{
-  font-size: 13px;
-  width: fit-content;
-  padding: 3px 7px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  background: #f5e3fb;
-  color: #790078;
-}
-
-.column-header--red{
- color: #ce5353;
- background: #ffd2d2;
-}
-
-.column-header--green{
- color: #0b4518;
- background: #c8f0c3;
-    
-}
-
-.column-header--yellow{
- background: #fff4ab;
-    color: #bb9345;
-}
-
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-.gifs {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.gifs>.gifs__item {
-  width: 20%;
-  min-height: 300px;
-}
-
-.gifs__item>img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}

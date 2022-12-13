@@ -4,14 +4,13 @@ import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import logo from '../../img/icons/logo+.png';
-import userLogo from '../../img/icons/UserIcon.png';
+import userLogo from '../../img/user_icon.png';
 import decode from 'jwt-decode';
 import { showModal } from '../../actions/modal';
 import { createTopic } from '../../actions/topics';
 import { createSet } from '../../actions/sets';
-import {  IProfile } from '../../types/types';
+// import {  IProfile } from '../../types/types';
 import './style.less';
-
 
 const NavBar: FC = () =>{
     const location = useLocation();
@@ -59,23 +58,24 @@ const NavBar: FC = () =>{
         }))
     }
 
-    // const navClasses = classNames('navigation',
-    //     {
-    //         'navigation--set-page': navigation.location.pathname.includes('set'),
-    //         'navigation--fav-page': navigation.location.pathname.includes('favourites')
-    //     }
-    // )
+    const navClasses = classNames('navigation',
+        {
+            'navigation--set-page': location.pathname.includes('Set'),
+            // 'navigation--fav-page':location.pathname.includes('favourites')
+        }
+    )
 
     return (
         <>
-            {user && user.result.username &&
-                <div className="navigation navigation--fav-page">
-                    <div className="navigation-logo">
-                        <a href='/'>
-                            <img src={logo} alt="logo" />
-                        </a>
-                    </div>
-                    <div className="navigation-create">
+            <div className={navClasses}>
+                <div className="navigation-logo">
+                    <a href='/dashboard'>
+                        <img src={logo} alt="logo" />
+                    </a>
+                </div>
+                {user && user.result.username &&
+                    <>
+                        <div className="navigation-create">
                         <div className="navigation-create__placeholder" onClick={toggleCreateMenuMode}>Create</div>
                         {isCreateMenuOpen &&
                             <div className="navigation-create__options">
@@ -101,10 +101,9 @@ const NavBar: FC = () =>{
                                 </div>
                             }
                         </div>
-
                     </div>
-                </div>
-            }
+                </>}
+            </div>
         </>
     )
 }

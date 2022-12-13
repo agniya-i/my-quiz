@@ -1,5 +1,6 @@
 import api from './axiosClient.js';
 
+/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
     fetchSet(slug) {
         return api.get('/sets/' + slug);
@@ -8,7 +9,7 @@ export default {
         return api.get('/sets');
     },
     createSet(newSet) {
-        return api.post('/sets', newSet);
+        return api.post('/sets/', { set: newSet });
     },
     updateRepeatList({ setId, cardId }) {
         return api.post('/sets/repeatList', { setId, cardId });

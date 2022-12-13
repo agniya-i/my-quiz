@@ -1,0 +1,29 @@
+.new-item{
+    width: 25%;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(246, 246, 246);
+    transition: transform 500ms;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.05);
+    }
+
+    div{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid rgb(206, 206, 206);
+        border-radius: 50%;
+      
+        span{
+            display: block;
+            color: rgb(206, 206, 206);
+        }
+    }
+}

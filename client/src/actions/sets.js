@@ -43,11 +43,14 @@ export const createFolderSet = (folderId, setData, history) => async (dispatch) 
 }
 
 
-export const createSet = (setId, setData) => async (dispatch) => {
+export const createSet = (setData) => async (dispatch) => {
     try {
-        const { data } = await api.createSet(setId, setData);
+        //const { data } = await api.createSet(setId, setData);
+        console.log(setData);
 
+        const { data } = await api.createSet(setData);
 
+        console.log(data);
         dispatch({ type: CREATE_SET, payload: data });
 
     } catch (e) {
@@ -55,9 +58,9 @@ export const createSet = (setId, setData) => async (dispatch) => {
     }
 }
 
-export const getSet = (slug) => async (dispatch) => {
+export const getSet = (id) => async (dispatch) => {
     try {
-        const { data } = await api.fetchSet(slug);
+        const { data } = await api.fetchSet(id);
 
         dispatch({ type: GET_SET, payload: data });
     } catch (e) {

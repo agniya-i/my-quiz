@@ -1,9 +1,8 @@
 
-import React, { FC } from "react";
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import FolderList from "../../components/Lists/FoldersList/FoldersList";
 import SetsList from "../../components/Lists/SetsList/SetsList";
-
 import './Dashboard.less';
 
 const Dashboard: FC = () => {

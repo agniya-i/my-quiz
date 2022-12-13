@@ -2,11 +2,13 @@ import React, { FC, useState } from 'react';
 import Button from '../../UI Components/Button/Button';
 import Input from '../../UI Components/Input/Input';
 import { signUp } from '../../../actions/auth';
-// import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../hooks/useTypedSelector';
-import './style.less';
+import './SingUpForm.less';
 
+type Props = {
+    onToggleForm: () => void;
+}
 type FormData = {
     username: string,
     email: string,
@@ -21,7 +23,7 @@ const initialState = {
     confirmPassword: ''
 }
 
-const SignUpForm: FC = () => {
+const SignUpForm: FC<Props> = ({ onToggleForm }) => {
     const [formData, setFormData] = useState<FormData>(initialState);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -36,7 +38,7 @@ const SignUpForm: FC = () => {
     }
 
     return (
-        <>
+        <div className="form">
             <h2 className="form-title slide-right">Create your account!</h2>
             <form onSubmit={handleSubmit}>
                 <Input
@@ -55,7 +57,6 @@ const SignUpForm: FC = () => {
                     onChange={handleChange}
                     color="primary"
                 />
-
                 <Input
                     type="text"
                     name="password"
@@ -78,7 +79,8 @@ const SignUpForm: FC = () => {
                     color="primary"
                 />
             </form>
-        </>
+            <div className='link-btn' onClick={onToggleForm}>Have an account? Sign in!</div>
+        </div>
     )
 
 }

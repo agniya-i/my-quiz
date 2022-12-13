@@ -1,20 +1,18 @@
-import React from 'react';
+import React, {FC} from 'react';
 import Input from '../../UI Components/Input/Input';
-
-import './style.less';
-
+import './CardForm.less';
 
 
-export default function CardForm(props) {
+type Props = {
+    index: number, 
+    onChange: (index: number, item: React.ChangeEvent<HTMLInputElement>) => void;
+}   
 
-    const { index, onChange } = props;
-    // const dispatch = useDispatch();
-    // const history = useHistory();
+const CardForm:FC<Props> = ({ index, onChange }) => {
 
-    function handleChange(e) {
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         onChange(index, e.target);
     }
-
 
     return (
         <div className='card'>
@@ -28,9 +26,9 @@ export default function CardForm(props) {
             />
             <Input
                 type="text"
-                name="definition"
-                id="definition"
-                labelTitle="Definition"
+                name="description"
+                id="description"
+                labelTitle="Description"
                 onChange={handleChange}
                 color="black"
             />
@@ -38,3 +36,5 @@ export default function CardForm(props) {
     )
 
 }
+
+export default CardForm;

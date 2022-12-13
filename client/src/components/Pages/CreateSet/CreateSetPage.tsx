@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FC } from "react";
 import { useDispatch } from "react-redux";
 import Input from "../../UI Components/Input/Input";
 import CardForm from "../../Forms/CardForm/CardForm";
-import { createFolderSet } from '../../../actions/sets';
+import { createSet, createFolderSet } from '../../../actions/sets';
 import './style.less';
-import { useHistory, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { ICard} from "../../../types/types";
 
 const initialState = {
     title: "",
@@ -17,24 +18,21 @@ const initialState = {
         definition: ""
     }]
 }
-function CreateSetPage() {
-
+const CreateSetPage: FC = () => {
     const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
-    const history = useHistory();
-    const { folderId } = useParams();
+    // const navigate = useNavigate();
+    // const { folderId } = useParams();
 
 
-    function handleChange(e) {
+    function handleChange(e:React.ChangeEvent<HTMLInputElement>) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-
     }
 
-    function handleCardChange(index, elem) {
-        const cards = formData.cards;
+    function handleCardChange(index: number, elem: any) {
+        const cards:any = formData.cards ;
         cards[index][elem.name] = elem.value;
         setFormData({ ...formData, cards })
-
     }
 
     function handleAddCard() {
@@ -43,9 +41,12 @@ function CreateSetPage() {
     }
 
 
-    function handleSubmit(e) {
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        dispatch(createFolderSet(folderId, formData, history));
+
+        // dispatch(createFolderSet(folderId, formData, navigate));
+
+        dispatch(createSet(formData));
     }
 
     return (
@@ -56,17 +57,17 @@ function CreateSetPage() {
                         type="text"
                         name="title"
                         id="title"
-                        labelTitle="Set Title: "
+                        labelTitle="Set Title"
                         onChange={handleChange}
-                        color="white"
+                        color="black"
                     />
                     <Input
                         type="text"
                         name="descritpion"
                         id="descritpion"
-                        labelTitle="Description: "
+                        labelTitle="Description"
                         onChange={handleChange}
-                        color="white"
+                        color="black"
                     />
                 </div>
             </div>

@@ -13,14 +13,13 @@ API.interceptors.request.use(req => {
 })
 
 
-
 export const fetchTopics = () => API.get('/topics');
 export const createTopic = (newTopic) => API.post('/topics', newTopic);
 export const fetchTopic = (slug) => API.get('/topics/' + slug);
 
 export const fetchSets = () => API.get('/sets');
 export const createSet = (newSet) => API.post('/sets', newSet);
-export const fetchSet = (slug) => API.get('/sets/' + slug);
+export const fetchSet = (id) => API.get('/sets/' + id);
 export const updateRepeatList = ({ setId, cardId }) => API.post('/sets/repeatList', { setId, cardId });
 export const createCards = (setId, cards) => API.post('/sets/cards', { setId, cards });
 

@@ -1,5 +1,6 @@
 import api from './axiosClient.js';
 
+/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 
 export default {
     getProfile(uid) {

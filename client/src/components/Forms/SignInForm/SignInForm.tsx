@@ -1,29 +1,30 @@
 import React, { FC, useState } from 'react';
-import './style.less';
 import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
-// import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import googleLogo from '../../../img/icons/google-symbol.png';
 import Input from '../../UI Components/Input/Input';
 import Button from '../../UI Components/Button/Button';
 import { signIn } from '../../../actions/auth';
 import { useAppDispatch } from '../../../hooks/useTypedSelector';
+import './SignInForm.less';
 
+const clientId: string = (process.env.GOOGLE_LOGIN_CLIENT_ID as string);
 
-// const clientId: string = (process.env.GOOGLE_LOGIN_CLIENT_ID as string);
-
-const clientId = "3601760083-ko6lv0hq77pco0pevq6g3vp5692tfoga.apps.googleusercontent.com";
 type Props = {
-    onOpenSingUp: () => void;
+    onToggleForm: () => void;
 } 
 
+type FormData = {
+    email: string, 
+    password: string
+}
 const initialState = {
     email: '',
     password: ''
 }
 
-const SignInForm: FC<Props> = ({ onOpenSingUp }) => {
-    const [userData, setUserData] = useState(initialState);
+const SignInForm: FC<Props> = ({ onToggleForm }) => {
+    const [userData, setUserData] = useState<FormData>(initialState);
 
     const dispatch = useAppDispatch();
     const navigation = useNavigate();
@@ -35,10 +36,11 @@ const SignInForm: FC<Props> = ({ onOpenSingUp }) => {
 
         try {
             dispatch({ type: 'AUTH', data: { result, token } });
+
             navigation('/dashboard');
 
         } catch (e) {
-
+            console.error(e);
         }
     }
 
@@ -58,7 +60,7 @@ const SignInForm: FC<Props> = ({ onOpenSingUp }) => {
 
 
     return (
-        <React.Fragment>
+        <div className="form">
             <h2 className="form-title slide-right">Hi,<br></br> Welcome Back!</h2>
             <form onSubmit={handleSubmit}>
                 <Input
@@ -69,7 +71,6 @@ const SignInForm: FC<Props> = ({ onOpenSingUp }) => {
                     onChange={handleChange}
                     color="primary"
                 />
-
                 <Input
                     type="text"
                     id="password"
@@ -94,8 +95,8 @@ const SignInForm: FC<Props> = ({ onOpenSingUp }) => {
                 onSuccess={googleSuccess}
                 onFailure={googleFailure}
             />
-            <div className="link-btn" onClick={onOpenSingUp}>Create account</div>
-        </React.Fragment>
+            <div className="link-btn" onClick={onToggleForm}>Create account</div>
+        </div>
 
     )
 }

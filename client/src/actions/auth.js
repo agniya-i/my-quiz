@@ -19,7 +19,6 @@ export const signUp = (formData, navigation) => async (dispatch) => {
 }
 
 export const signIn = (formData, navigation) => async (dispatch) => {
-
     try {
         const { data } = await api.signIn(formData);
 
@@ -31,12 +30,10 @@ export const signIn = (formData, navigation) => async (dispatch) => {
     } catch (e) {
         console.error(e);
     }
-
 }
 
 export const getProfile = (history) => async (dispatch) => {
     const userData = JSON.parse(localStorage.getItem('profile'));
-
 
     if (userData) {
         dispatch({ type: 'AUTH', data: userData });
@@ -44,5 +41,4 @@ export const getProfile = (history) => async (dispatch) => {
     } else {
         history.push('/');
     }
-
 }

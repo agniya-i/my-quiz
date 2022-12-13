@@ -4,7 +4,7 @@ import TopicItem from "../../Topic Item/TopicItem";
 import { getSets } from '../../../actions/sets';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useTypedSelector';
 import { ISet } from '../../../types/types';
-
+import NewItemCard from '../../NewItemCard/NewItemCard';
 const SetsList = ()=> {
     const sets = useAppSelector((state) => state.sets);
     const dispatch = useAppDispatch();
@@ -12,6 +12,10 @@ const SetsList = ()=> {
     useEffect(() => {
         dispatch(getSets());
     }, [dispatch]);
+
+    // const handleModalOpen = () =>{
+    //     console.log('f');
+    // }
 
     return (
         <React.Fragment>
@@ -21,9 +25,7 @@ const SetsList = ()=> {
                     sets.map(( set: ISet, i: number) => 
                         <TopicItem key={set._id} type='set' topic={set} />
                     ): 
-                    <div>
-                        Add New Set
-                    </div>
+                        <NewItemCard link={"/createSet"}/>
                     
                 }
             </div>

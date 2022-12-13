@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Dashboard from './pages/Dashboard/Dashboard';
 import Auth from './components/Auth/Auth';
 import NavBar from './components/NavBar/NavBar';
+import CreateSetPage from './components/Pages/CreateSet/CreateSetPage';
+import SetPage from './components/Pages/';
 
 const App: FC = () => {
   
@@ -17,13 +19,14 @@ const App: FC = () => {
             <div className="app">
                 <NavBar />
                 <Routes>
-                    <Route path='/login' element={<Auth />} />
-                 
+                    <Route path='/' element={<Auth />} />
+                    <Route path='/dashboard' element={<Dashboard />} /> 
+                    <Route path='/createSet' element={<CreateSetPage />} /> 
+                    <Route path='/set/:id' element={SetPage} />
+
                     {/* <Route path='/' element={<Homepage />} />
                     <Route path="/test" element={<Homepage />} /> */}
-                    <Route path='/dashboard' element={<Dashboard />} /> 
                     {/* <Route path='/folder/:slug' component={FolderPage} />
-                    <Route path='/set/:slug' component={SetPage} />
                     {/* /<Route path='/favourites' component={FavouritesPage} /> */}
                     {/* <Route path='/favourites/:folderId' component={FavouritesPage} />
                     <Route path='/folders' component={FoldersListPage} />
