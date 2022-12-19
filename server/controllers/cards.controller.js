@@ -1,23 +1,11 @@
 import Set from '../models/set.model.js';
 import Card from '../models/card.model.js';
 import Controller from './Controller.js'
-
-// todo
-const getCardsByIds = async ({cardIds}) => {
-    if(!Array.isArray(cardIds)) {
-        throw 'Cards Ids must be array';
-    }
-    
-    return await Card.find({ '_id': { $in: cardIds } });
-}
-
+import { getCardsByIds } from '../services/cards.js'
 
 export const getCards = Controller(async (res, req) => {
     await getCardsByIds({ cardIds: req.params.cards });
 })
-// export const getCards = (req, res) => Controller(req, res, async () => {
-//     return await Card.find({ '_id': { $in: req.params.cards } });
-// })
 
 export const createCards = Controller(async (req, res) => {
     const cards = req.body.cards;

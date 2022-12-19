@@ -2,12 +2,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-
-
 import topicRoutes from './routes/topics.js';
 import userRoutes from './routes/users.js';
 import setsRoutes from './routes/sets.js';
 import favouritesRoutes from './routes/favourites.js';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const PORT = process.env.PORT || 3001;
 
@@ -21,7 +22,7 @@ app.use('/user', userRoutes);
 app.use('/sets', setsRoutes);
 app.use('/favourites', favouritesRoutes);
 
-mongoose.connect("", {
+mongoose.connect(process.env.MONGOOSE_ID, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,

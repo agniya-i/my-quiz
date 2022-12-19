@@ -29,7 +29,6 @@ export const getTopic = async (req, res) => {
 
         // const topicData = topic.map(dumpTopic);
 
-
         res.status(200).json({ ...topic, sets });
     } catch (error) {
         res.status(404).json({ message: error.message });
@@ -43,7 +42,6 @@ export const createTopic = async (req, res) => {
     }
     );
     topic.creator = req.userId;
-
 
     const newTopic = new Topic({ ...topic, createdAt: new Date().toISOString() });
 
