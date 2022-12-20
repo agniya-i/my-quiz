@@ -1,0 +1,53 @@
+
+.auth-form-wrapper{
+  margin: auto;
+  width: 45%;
+  padding: 40px 80px 40px 80px;
+  border: 2px solid #000000;
+  border-radius: 20px;
+  box-shadow: 8px 8px 0 1px;
+   animation: 1s slide-top ease-in-out;
+   margin-top: 30px;
+   background-color: rgb(255, 255, 255);
+    @media screen and (max-width: 900px) {
+        width: 70% ;
+    }
+}
+
+.form-title{
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.slide-right {
+  width: 100%;
+  overflow: hidden;  
+}
+
+@keyframes slide-top {
+  from{
+   opacity:0
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes slide-right {
+  from{
+   transform:translateX(-100%);
+  }
+  to {
+    transform:translateX(0);
+  }
+}
+
+
+
+.link-btn{
+   color: #5458e2;
+   text-align: center;
+   font-size: 14px;
+   font-weight: 600;
+   cursor: pointer;
+}

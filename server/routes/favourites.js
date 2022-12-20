@@ -1,14 +1,13 @@
 import express from 'express';
-const router = express.Router();
 import { auth } from '../middleware/auth.js';
+import { getFavourites, updateFavourites } from '../controllers/favourites.controller.js';
 
-import { getFavourites, updateFavourites } from '../controllers/favourites.js';
+const router = express.Router();
 
 router.get('/:folderId', auth, getFavourites);
 router.post('/', auth, updateFavourites);
 
 //router.post('/', auth, addToFavourites);
 //router.post('/', auth, removeFromFavourites);
-
 
 export default router;

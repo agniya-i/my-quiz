@@ -6,7 +6,7 @@ import slugify from 'slugify';
 const cardSetSchema = mongoose.Schema({
     creator: { type: String, required: true },
     slug: {
-        type: String, required: true
+        type: String
     },
     title: { type: String, required: true },
     description: { type: String },

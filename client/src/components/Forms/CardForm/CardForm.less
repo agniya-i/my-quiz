@@ -1,0 +1,30 @@
+.card{
+    width: 70%;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    padding: 20px;
+    border-radius: 5px;
+    color: #fff;
+    margin-bottom: 30px;
+    background-color: #f7f7f7b3;
+    border-top: 2px solid #000000;
+    animation: 0.2s slide-down  ease-in-out;
+  
+
+    span{
+      width: 50%;
+        margin-right: 40px;
+    }
+}
+
+
+@keyframes slide-down {
+  from{
+   transform:translateY(-10%);
+  }
+  to {
+    transform:translateX(0);
+  }
+}
+
