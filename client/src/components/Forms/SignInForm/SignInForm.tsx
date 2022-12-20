@@ -8,14 +8,14 @@ import { signIn } from '../../../actions/auth';
 import { useAppDispatch } from '../../../hooks/useTypedSelector';
 import './SignInForm.less';
 
-const clientId: string = (process.env.GOOGLE_LOGIN_CLIENT_ID as string);
+// const clientId: string = (process.env.GOOGLE_LOGIN_CLIENT_ID as string);
 
 type Props = {
     onToggleForm: () => void;
-} 
+}
 
 type FormData = {
-    email: string, 
+    email: string,
     password: string
 }
 const initialState = {
@@ -64,7 +64,7 @@ const SignInForm: FC<Props> = ({ onToggleForm }) => {
             <h2 className="form-title slide-right">Hi,<br></br> Welcome Back!</h2>
             <form onSubmit={handleSubmit}>
                 <Input
-                    type="text"
+                    type="email"
                     id="email"
                     name="email"
                     labelTitle="E-mail"
@@ -72,7 +72,7 @@ const SignInForm: FC<Props> = ({ onToggleForm }) => {
                     color="primary"
                 />
                 <Input
-                    type="text"
+                    type="password"
                     id="password"
                     name="password"
                     labelTitle="Password"
@@ -86,7 +86,7 @@ const SignInForm: FC<Props> = ({ onToggleForm }) => {
                 />
             </form>
             <GoogleLogin
-                clientId={clientId}
+                clientId={""}
                 render={(rednerProps) => (
                     <button className="google-btn" onClick={rednerProps.onClick}>
                         <img alt="google-icon" src={googleLogo} /> <span>Sign In with Google</span>

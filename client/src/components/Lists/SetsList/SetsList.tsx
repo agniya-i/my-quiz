@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import './style.less';
-import TopicItem from "../../Topic Item/TopicItem";
 import { getSets } from '../../../actions/sets';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useTypedSelector';
 import { ISet } from '../../../types/types';
 import NewItemCard from '../../NewItemCard/NewItemCard';
-const SetsList = ()=> {
+import CardListItem from '../../CardListItem/CardListItem';
+
+const SetsCardList: FC = () => {
     const sets = useAppSelector((state) => state.sets);
     const dispatch = useAppDispatch();
 
@@ -13,25 +14,24 @@ const SetsList = ()=> {
         dispatch(getSets());
     }, [dispatch]);
 
-    // const handleModalOpen = () =>{
-    //     console.log('f');
-    // }
+    const renderCardList = () => {
+        return <>
+            {
+                sets.map((set: ISet, i: number) => <CardListItem key={set._id} type='set' topic={set} />)
+            }
+            <NewItemCard link={"/createSet"} />
+        </>
+    }
 
     return (
-        <React.Fragment>
-            <div className="sets-list">
-                {
-                    sets && !!sets.length ?
-                    sets.map(( set: ISet, i: number) => 
-                        <TopicItem key={set._id} type='set' topic={set} />
-                    ): 
-                        <NewItemCard link={"/createSet"}/>
-                    
-                }
-            </div>
-        </React.Fragment>
-
-    );
+        <div className="sets-list">
+            {
+                sets && !!sets.length ?
+                    renderCardList() :
+                    <NewItemCard link={"/createSet"} />
+            }
+        </div>
+    )
 }
 
-export default SetsList;
+export default SetsCardList;

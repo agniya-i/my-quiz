@@ -1,10 +1,11 @@
 
-export interface IFolder{
+export interface IFolder {
     title: string;
     _id: string;
+    cards: ICard[]
 }
 
-export interface IProfile{
+export interface IProfile {
     username: string;
     createdAt: string;
     email: string;
@@ -15,12 +16,13 @@ export interface IProfile{
 }
 
 
-export interface ISet{
+export interface ISet {
     _id: string;
+    title: string;
     cards: ICard[];
 }
 
-export interface ICard{
+export interface ICard {
     title: string,
     description: string
 }

@@ -1,5 +1,4 @@
-import {FC, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { FC, useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import { Oval } from 'react-loader-spinner';
 import { getSet, shuffleSet } from '../../actions/sets';
@@ -8,17 +7,12 @@ import StudySetForm from '../../components/Forms/StudySetForm/StudySetForm';
 import StudySetSlider from '../../components/StudySetSlider/StudySetSlider';
 import CardNavBar from '../../components/CardNavBar/CardNavBar';
 import leftArrow from '../../img/icons/left-arrow.png';
-import folderIcon from '../../../img/icons/folder.png';
-
+import folderIcon from '../../img/icons/folder.png';
 import { useAppDispatch, useAppSelector } from '../../hooks/useTypedSelector';
-
 import './SetPage.less';
 
-
 const SetPage: FC = () => {
-
     const { id } = useParams();
-
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const currentSet = useAppSelector(state => state.set);

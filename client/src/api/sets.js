@@ -23,7 +23,7 @@ export default {
         return api.post('/sets/createSet', { folderId, setData });
     },
     deleteSet(setId) {
-        return api.delete('/sets/deleteSet', { data: setId });
+        return api.delete('/sets', { data: setId });
     }
 
 }

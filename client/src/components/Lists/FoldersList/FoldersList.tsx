@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import './style.less';
-// import TopicItem from "../../Topic Item/TopicItem";
+import React, { FC, useEffect } from 'react';
 import { getTopics } from '../../../actions/topics';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useTypedSelector';
 import NewItemCard from '../../NewItemCard/NewItemCard';
+import CardListItem from '../../CardListItem/CardListItem';
+import './FolderList.less';
 
-const FolderList = () =>{
+const FolderList: FC = () => {
     const topics = useAppSelector(state => state.topics);
     const dispatch = useAppDispatch();
 
@@ -14,24 +14,14 @@ const FolderList = () =>{
     }, [dispatch]);
 
 
-    const handleModalOpen = () =>{
+    const handleModalOpen = () => {
         console.log('opn');
     }
-    
-    return (
-        <>
-            <div className="sets-list">
 
-                {
-                    topics && !!topics.length ?
-                        topics.map(topic => <div>{topic}</div>) :
-                        <NewItemCard link={"/createFolder"}/>
-                     
-                    // topics.map((topic, i) => <TopicItem key={topic._id} type='folder' topic={topic} />)
-                    
-                }
-            </div>
-        </>
+    return (
+        <div className="sets-list">
+            <NewItemCard link={"/createFolder"} />
+        </div>
     );
 }
 

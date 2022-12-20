@@ -1,18 +1,17 @@
 
-import React, {FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import logo from '../../img/icons/logo+.png';
-import userLogo from '../../img/user_icon.png';
+import userLogo from '../../img/icons/user-icon.png';
 import decode from 'jwt-decode';
 import { showModal } from '../../actions/modal';
 import { createTopic } from '../../actions/topics';
 import { createSet } from '../../actions/sets';
-// import {  IProfile } from '../../types/types';
 import './style.less';
 
-const NavBar: FC = () =>{
+const NavBar: FC = () => {
     const location = useLocation();
     const dispatch = useDispatch();
     const navigation = useNavigate();
@@ -76,33 +75,33 @@ const NavBar: FC = () =>{
                 {user && user.result.username &&
                     <>
                         <div className="navigation-create">
-                        <div className="navigation-create__placeholder" onClick={toggleCreateMenuMode}>Create</div>
-                        {isCreateMenuOpen &&
-                            <div className="navigation-create__options">
-                                <div className="navigation-create__options-item" onClick={() => handleModalOpen('folder', createTopic)}>Folder</div>
-                                <div className="navigation-create__options-item" onClick={() => handleModalOpen('set', createSet)}>Set</div>
-                            </div>
-                        }
-                    </div>
-
-                    <div className="navigation-options">
-                        <div className="navigation-options__user" >
-                            <div className="user__icon" onClick={toggleMenuMode}>
-                                <img src={userLogo} alt="user-logo" />
-                            </div>
-
-                            {isMenuOpen &&
-                                <div className="user__menu">
-                                    <div className="user__menu-top">
-                                        <div className="username">{user.result.username}</div>
-                                        <div className="email">{user.result.email}</div>
-                                    </div>
-                                    <button className="logout-btn" onClick={handleLogout}>Logout</button>
+                            <div className="navigation-create__placeholder" onClick={toggleCreateMenuMode}>Create</div>
+                            {isCreateMenuOpen &&
+                                <div className="navigation-create__options">
+                                    <div className="navigation-create__options-item" onClick={() => handleModalOpen('folder', createTopic)}>Folder</div>
+                                    <div className="navigation-create__options-item" onClick={() => handleModalOpen('set', createSet)}>Set</div>
                                 </div>
                             }
                         </div>
-                    </div>
-                </>}
+
+                        <div className="navigation-options">
+                            <div className="navigation-options__user" >
+                                <div className="user__icon" onClick={toggleMenuMode}>
+                                    <img src={userLogo} alt="user-logo" />
+                                </div>
+
+                                {isMenuOpen &&
+                                    <div className="user__menu">
+                                        <div className="user__menu-top">
+                                            <div className="username">{user.result.username}</div>
+                                            <div className="email">{user.result.email}</div>
+                                        </div>
+                                        <button className="logout-btn" onClick={handleLogout}>Logout</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </>}
             </div>
         </>
     )

@@ -22,42 +22,14 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader'
-                    // {
-                    //     loader: 'css-loader',
-                    //     options: {
-
-                    //         // modules: true,
-                    //         // localIdentName: '[path][name]__[local]--[hash:base64:5]',
-                    //         modules: {
-                    //             localIdentName: '[local]__[hash:base64:5]'
-                    //         }
-
-                    //     }
-                    // }
                 ],
             },
-
-
             {
                 test: /\.less$/i,
-                // use: [
-                //     // compiles Less to CSS
-                //     "style-loader",
-                //     "css-loader",
-                //     "less-loader",
-                // ],
                 use: [
                     "style-loader",
                     "css-loader",
                     "less-loader",
-                    // {
-                    //     loader: "css-loader",
-                    // options: {
-                    //     modules: {
-                    //         localIdentName: '[local]__[hash:base64:5]'
-                    //     }
-                    // }
-                    // }
                 ]
 
             },

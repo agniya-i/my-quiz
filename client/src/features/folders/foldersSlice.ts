@@ -3,6 +3,7 @@ import api from "../../api/folders";
 import { IFolder } from "../../types/types";
 
 // TODO
+
 interface FolderState {
     loading: boolean;
     error: null | string;
@@ -13,10 +14,10 @@ interface FolderState {
 export const getFolders = createAsyncThunk(
     "folders/getFolders",
     async (data, thunkApi) => {
-        try{
+        try {
             const response = await api.getFolders();
             return response.data;
-        }catch(e:any){
+        } catch (e: any) {
             return thunkApi.rejectWithValue(e.message);
         }
     }
@@ -60,50 +61,50 @@ export const updateFolder = createAsyncThunk(
 
 const initialState = {
     loading: false,
-    error: null, 
-    data: [] 
+    error: null,
+    data: []
 } as FolderState;
 
 //SLICE
 const folderSlice = createSlice({
-    name: "folder", 
+    name: "folder",
     initialState,
-    reducers: {}, 
-    extraReducers(builder){
+    reducers: {},
+    extraReducers(builder) {
         builder
-        .addCase(getFolders.pending , (state, action)=>{
-            state.loading = true;
-        })
-        .addCase(getFolders.fulfilled, (state, action: PayloadAction<IFolder[]>) =>{
-            state.loading = false;
-            state.data = action.payload;
-        })
-        .addCase(getFolders.rejected, (state, action: PayloadAction<any>)=>{
-            state.loading = false; 
-            state.error = action.payload;
-        })
-        .addCase(createFolder.pending, (state, action) => {
-            state.loading = true;
-        })
-        .addCase(createFolder.fulfilled, (state, action: PayloadAction<IFolder[]>) => {
-            state.loading = false;
-            state.data = action.payload;
-        })
-        .addCase(createFolder.rejected, (state, action: PayloadAction<any>) => {
-            state.loading = false;
-            state.error = action.payload;
-        })
-        .addCase(getFolder.pending, (state, action) => {
-            state.loading = true;
-        })
-        .addCase(getFolder.fulfilled, (state, action: PayloadAction<IFolder[]>) => {
-            state.loading = false;
-            state.data = action.payload;
-        })
-        .addCase(getFolder.rejected, (state, action: PayloadAction<any>) => {
-            state.loading = false;
-            state.error = action.payload;
-        })
+            .addCase(getFolders.pending, (state, action) => {
+                state.loading = true;
+            })
+            .addCase(getFolders.fulfilled, (state, action: PayloadAction<IFolder[]>) => {
+                state.loading = false;
+                state.data = action.payload;
+            })
+            .addCase(getFolders.rejected, (state, action: PayloadAction<any>) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(createFolder.pending, (state, action) => {
+                state.loading = true;
+            })
+            .addCase(createFolder.fulfilled, (state, action: PayloadAction<IFolder[]>) => {
+                state.loading = false;
+                state.data = action.payload;
+            })
+            .addCase(createFolder.rejected, (state, action: PayloadAction<any>) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(getFolder.pending, (state, action) => {
+                state.loading = true;
+            })
+            .addCase(getFolder.fulfilled, (state, action: PayloadAction<IFolder[]>) => {
+                state.loading = false;
+                state.data = action.payload;
+            })
+            .addCase(getFolder.rejected, (state, action: PayloadAction<any>) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
     }
 });
 

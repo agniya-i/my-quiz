@@ -1,7 +1,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
-import './style.less';
+import './Input.less';
 
 type InputProps = {
     name: string,
@@ -12,8 +12,8 @@ type InputProps = {
     errorMessage?: string,
     onChange: (str: React.ChangeEvent<HTMLInputElement>) => void;
     value?: string
-
 }
+
 const Input = (props: InputProps) => {
     const {
         name,
