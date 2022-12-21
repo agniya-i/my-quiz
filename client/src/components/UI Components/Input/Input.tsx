@@ -14,16 +14,17 @@ type InputProps = {
     value?: string
 }
 
-const Input = (props: InputProps) => {
-    const {
-        name,
-        onChange,
-        type,
-        color,
-        labelTitle,
-        id,
-        errorMessage
-    } = props;
+const Input: React.FC<InputProps> = ({
+    name,
+    onChange,
+    type,
+    color,
+    labelTitle,
+    id,
+    errorMessage,
+    ...props
+}) => {
+
 
     const fieldClasses = classnames('input', { [`input--${color}`]: true });
     const labelClasses = classnames('input-label', { [`input-label--${color}`]: true });
@@ -50,6 +51,7 @@ const Input = (props: InputProps) => {
                 onChange={handleChange}
                 className={fieldClasses}
                 type={type}
+                {...props}
             />
             {
                 errorMessage &&

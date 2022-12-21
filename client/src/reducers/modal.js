@@ -6,11 +6,10 @@ const initialState = {
     modalProps: {}
 }
 
-
 const modalReducer = (state = initialState, action) => {
     switch (action.type) {
         case SHOW_MODAL:
-            console.log(action);
+            console.log('f', action);
             return {
                 ...state,
                 modalType: action.data.modalType,

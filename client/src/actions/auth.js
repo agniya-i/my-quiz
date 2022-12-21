@@ -1,5 +1,4 @@
 import { AUTH } from '../constants/actionTypes';
-
 import api from "../api/profile";
 
 // return async function 

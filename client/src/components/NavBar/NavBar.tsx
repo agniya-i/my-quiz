@@ -1,20 +1,19 @@
 
 import React, { FC, useState, useEffect, useRef, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import classNames from 'classnames';
-import logo from '../../img/icons/logo+.png';
-import userLogo from '../../img/icons/user-icon.png';
 import decode from 'jwt-decode';
 import { showModal } from '../../actions/modal';
 import { createTopic } from '../../actions/topics';
 import { createSet } from '../../actions/sets';
+import { useAppDispatch, useAppSelector } from '../../hooks/useTypedSelector';
 import useClickOutside from '../../hooks/useClickOutside';
+import logo from '../../img/icons/logo+.png';
+import userLogo from '../../img/icons/user-icon.png';
 import './NavBar.less';
 
 const NavBar: FC = () => {
     const location = useLocation();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigation = useNavigate();
     const ref = useRef();
 
@@ -54,12 +53,12 @@ const NavBar: FC = () => {
         navigation('/favourites');
     }
 
-    const handleModalOpen = (type: string, callback: () => void) => {
+    const handleModalOpen = (type: string, callback) => {
         dispatch(showModal({
             modalType: 'CREATE_INSTANCE',
             modalProps: {
                 formTitle: `Create new ${type}`,
-                onSubmit: callback
+                //onSubmit: callback
             }
         }))
     }

@@ -31,8 +31,16 @@ const CardListItem: FC<Props> = ({ topic, type }) => {
     return (
         <div key={topic._id} className="topic-item">
             <div className="topic-item__title"><a href={`/${type}/${topic._id}`}>{topic.title} </a></div>
-            <div className="topic-item__quantity">{topic.cards && topic.cards.length} cards</div>
+            {
+                type === 'set' &&
+                <div className="topic-item__quantity">{topic.cards && topic.cards.length} cards</div>
 
+            }
+            {
+                type === 'folder' &&
+                <div className="topic-item__quantity">{topic.sets && !!topic.sets.length || 0} sets</div>
+
+            }
             <div className="topic-item__options">
                 <div className="topic-item__options-icon" onClick={handleOpenOptions}></div>
                 {isOpenOption &&

@@ -3,7 +3,10 @@ import { useDispatch } from 'react-redux';
 import { hideModal } from '../../../actions/modal';
 import Input from '../../UI Components/Input/Input';
 import Button from '../../UI Components/Button/Button';
-import closeIcon from '../../../img/icons/close.png';
+import closeIcon from '../../../img/cross.png';
+import { createTopic } from '../../../actions/topics';
+import { useAppDispatch, useAppSelector } from '../../../hooks/useTypedSelector';
+
 import './CreateInstanceModal.less';
 
 const initialState = {
@@ -11,11 +14,9 @@ const initialState = {
     description: '',
     tags: []
 }
-const CreateInstanceModal = ({ onSubmit, formTitle }) => {
-
+const CreateInstanceModal = ({ formTitle }) => {
     const [data, setData] = useState(initialState)
-
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const handleChange = (e) => {
         const { target } = e;
@@ -24,12 +25,17 @@ const CreateInstanceModal = ({ onSubmit, formTitle }) => {
             ...prevState,
             [target.name]: target.value
         }))
-
     }
+
+    // TEMPORARY SOLUTION
+    // const onSubmit = () => {
+
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(onSubmit(data)).then(dispatch(hideModal()));
+        dispatch(createTopic(data))
+        handleClose();
     }
 
     const handleClose = () => {
@@ -62,17 +68,14 @@ const CreateInstanceModal = ({ onSubmit, formTitle }) => {
                         labelTitle="Description"
                         color="light"
                     />
-
                     <Input
                         labelTitle="Tags"
                         color="light"
                     />
-
-
                     <Button
                         type="submit"
                         buttonText="Create"
-                        color="green"
+                        color="black"
                     />
                 </form>
             </div>

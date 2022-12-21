@@ -7,6 +7,7 @@ import NavBar from './components/NavBar/NavBar';
 import CreateSetPage from './pages/CreateSet/CreateSetPage';
 import SetPage from './pages/SetPage/SetPage';
 import SetsList from './pages/SetsList/SetsList';
+import ModalRoot from './components/Modals/ModalRoot/ModalRoot';
 import './App.less';
 
 const App: FC = () => {
@@ -21,6 +22,7 @@ const App: FC = () => {
                     <Route path='/set/:id' element={<SetPage />} />
                     <Route path='/sets' element={<SetsList />} />
                 </Routes>
+                <ModalRoot />
             </div>
         </Router>
     )

@@ -44,17 +44,19 @@ const SetFormItem: FC<Props> = ({ index, onChange, onMoveCard, onRemoveCard }) =
                     type="text"
                     name="title"
                     id="title"
-                    labelTitle="Title"
+                    labelTitle=""
                     onChange={handleChange}
                     color="black"
+                    placeholder="Enter Term"
                 />
                 <Input
                     type="text"
                     name="description"
                     id="description"
-                    labelTitle="Description"
+                    labelTitle=""
                     onChange={handleChange}
                     color="black"
+                    placeholder="Enter Definition"
                 />
             </div>
         </div>
