@@ -3,6 +3,7 @@ import { FC, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/useTypedSelector';
 import { getSets } from '../../actions/sets';
 import { ISet } from '../../types/types';
+import './SetsList.less';
 
 const SetsList = () => {
     const sets = useAppSelector(state => state.sets);
@@ -14,9 +15,9 @@ const SetsList = () => {
 
 
     return (
-        <div className='sets-page'>
+        <div className='SetsListPage'>
             <div className='sets-page__header'>
-                <h3>Sets List</h3>
+                <h1>Your Sets</h1>
             </div>
             {
                 sets && !!sets.length &&

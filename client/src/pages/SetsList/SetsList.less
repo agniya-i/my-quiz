@@ -1,0 +1,33 @@
+.SetsListPage {
+    padding: 45px 50px 20px;
+
+    .sets-page {
+        &__header {
+            margin-bottom: 2rem;
+        }
+    }
+
+    .sets-list {
+        flex-direction: column;
+
+        &__item {
+            margin-bottom: 1rem;
+            /* font-weight: 500; */
+            font-size: 20px;
+            padding: 1px;
+            display: flex;
+            align-items: center;
+            // text-decoration: underline;
+
+            &::before {
+                content: "";
+                display: block;
+                width: 25px;
+                height: 25px;
+                background-image: url('../../img/card.png');
+                background-size: cover;
+                margin-right: 0.75rem;
+            }
+        }
+    }
+}

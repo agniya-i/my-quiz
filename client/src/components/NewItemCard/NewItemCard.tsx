@@ -1,18 +1,22 @@
 import React, { FC } from 'react';
-import './NewItemCard.less';
 import { useNavigate } from 'react-router-dom';
-
+import classNames from 'classnames';
+import './NewItemCard.less';
 
 type Props = {
     // onModalOpen: () => void
     link: string
+    type?: string
 }
 
-const NewItemCard: FC<Props> = ({ link }) => {
+const NewItemCard: FC<Props> = ({ link, type = 'default' }) => {
     const navigate = useNavigate();
-    
+    const itemClass = classNames('new-item', {
+        'new-item--transparent': type === 'transparent'
+    });
+
     return (
-        <div className="new-item" onClick={() => navigate(link)}>
+        <div className={itemClass} onClick={() => navigate(link)}>
             <div>
                 <span>+</span>
             </div>

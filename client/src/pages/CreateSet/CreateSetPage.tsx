@@ -1,11 +1,11 @@
 import React, { useEffect, useState, FC } from "react";
 import { useDispatch } from "react-redux";
 import Input from "../../components/UI Components/Input/Input";
-import CardForm from "../../components/Forms/CardForm/CardForm";
+import SetFormItem from "../../components/Forms/SetFormItem/SetFormItem";
 import { createSet, createFolderSet } from '../../actions/sets';
-import './CreateSetPage.less';
 import { useNavigate, useParams } from "react-router";
 import { ICard } from "../../types/types";
+import './CreateSetPage.less';
 
 const initialState = {
     title: "",
@@ -43,15 +43,14 @@ const CreateSetPage: FC = () => {
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-
         // dispatch(createFolderSet(folderId, formData, navigate));
-
         dispatch(createSet(formData));
     }
 
     return (
         <div className="CreateSetPage">
-            <div className="page-header">
+            <div className="page-header content-container">
+                <h3>Create a new study set</h3>
                 <div className="page-header__form">
                     <Input
                         type="text"
@@ -71,17 +70,19 @@ const CreateSetPage: FC = () => {
                     />
                 </div>
             </div>
-            <div className="cards-form">
-                <div>
-                    <h3>Cards:</h3>
+            <div className="cards-form content-container">
+                <h3>Cards:</h3>
+                <div className="cards-form__list">
+                    {
+                        formData.cards.map((item, index) =>
+                            <SetFormItem {...item} index={index} onChange={handleCardChange} />
+                        )
+                    }
                 </div>
-                {
-                    formData.cards.map((item, index) => <CardForm {...item} index={index} onChange={handleCardChange} />)
-                }
                 <div className="cards-form__add-btn" onClick={handleAddCard}>
                     <span>+</span>
                 </div>
-                <button className="cards-form__submit-btn" type="submit" onClick={handleSubmit}> Save Changes </button>
+                <button className="cards-form__submit-btn" type="submit" onClick={handleSubmit}>Save Changes</button>
             </div>
         </div>
     )

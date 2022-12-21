@@ -1,9 +1,8 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteSet } from '../../actions/sets';
 import { IFolder, ISet } from '../../types/types';
 import './CardListItem.less';
-
 
 type Props = {
     topic: IFolder | ISet,
@@ -11,6 +10,7 @@ type Props = {
 }
 
 const CardListItem: FC<Props> = ({ topic, type }) => {
+
     const [isOpenOption, setIsOpenOption] = useState(false);
     const dispatch = useDispatch();
 
@@ -21,7 +21,6 @@ const CardListItem: FC<Props> = ({ topic, type }) => {
 
     function handleDelete(e) {
         e.stopPropagation();
-        //e.stopPropagation();
         dispatch(deleteSet(topic._id));
     }
 
@@ -29,9 +28,8 @@ const CardListItem: FC<Props> = ({ topic, type }) => {
     //     history.push(`/${type === 'set' ? 'set' : 'folder'}/${topic.slug}`);
     // }
 
-
     return (
-        <div key={topic._uid} className="topic-item">
+        <div key={topic._id} className="topic-item">
             <div className="topic-item__title"><a href={`/${type}/${topic._id}`}>{topic.title} </a></div>
             <div className="topic-item__quantity">{topic.cards && topic.cards.length} cards</div>
 

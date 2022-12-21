@@ -12,10 +12,15 @@
     font-family: 'Roboto Mono';
     margin-right: 30px;
     background-color: #dfe0ff;
+    transition: all 0.3s ease-in-out;
     // -webkit-box-shadow: 1px 1px 9px -4px rgb(34, 60, 80, 0.2);
     // -moz-box-shadow: 1px 1px 9px -4px rgb(34, 60, 80, 0.2);
     // box-shadow: 3px 3px 0px 0px rgb(34, 60, 80, 0.2);
     // border: 1px solid #000;
+
+    &:hover {
+        background-color: #cdcff9;
+    }
 
     @media screen and(max-width: 1000px) {
         width: 50%;
@@ -23,19 +28,8 @@
 
     &__title {
         font-size: 18px;
-        color: @primary-blue;
-        transition: 0.2s;
         color: #000;
         margin-bottom: 7px;
-
-        a:visited {
-            color: #000;
-        }
-
-        &:hover {
-            font-weight: 700;
-
-        }
     }
 
     &__quantity {
@@ -66,7 +60,6 @@
             position: absolute;
             display: flex;
             right: 0;
-            border: 1px solid #000;
             background-color: #fff;
             padding: 10px 20px;
             font-size: 13px;

@@ -19,7 +19,7 @@ const SetsCardList: FC = () => {
             {
                 sets.map((set: ISet, i: number) => <CardListItem key={set._id} type='set' topic={set} />)
             }
-            <NewItemCard link={"/createSet"} />
+            <NewItemCard type='transparent' link={"/createSet"} />
         </>
     }
 

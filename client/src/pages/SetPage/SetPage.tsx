@@ -57,25 +57,42 @@ const SetPage: FC = () => {
                 </div>
                 <div className="set-header__top">
                     <div className="set-header__top-title">{currentSet && currentSet.title}</div>
-                    <div className="set-header__top-folder">
-                        <img src={folderIcon} alt="folder-icon" />
-                        <a href={`/folder/${currentSet && currentSet.folder && currentSet.folder.slug}`}>{currentSet && currentSet.folder && currentSet.folder.title}</a>
-                    </div>
+                    {currentSet && currentSet?.folder &&
+                        < div className="set-header__top-folder">
+                            <img src={folderIcon} alt="folder-icon" />
+                            <a href={`/folder/${currentSet && currentSet.folder && currentSet.folder.slug}`}>
+                                {currentSet && currentSet.folder && currentSet.folder.title}
+                            </a>
+                        </div>
+                    }
                 </div>
                 <div className="set-header__dscr">{currentSet && currentSet.description}</div>
             </div>
             {!isLoading && <CardNavBar onShuffle={handleShuffle} />}
             {
-                isLoading && <div className="set-page-loader"><Oval color="#000" height={80} width={80} /></div>
+                isLoading &&
+                <div className="set-page-loader">
+                    <Oval color="#000" height={80} width={80} />
+                </div>
             }
             {
-                !isLoading && currentSet && currentSet.cards && !currentSet.cards.length && <StudySetForm />
+                !isLoading &&
+                currentSet && currentSet.cards && !currentSet.cards.length &&
+                <StudySetForm />
             }
             {
-                !isLoading && currentSet && currentSet.cards && currentSet.cards.length && <StudySetSlider pageType="setPage" activeIndex={activeIndex} onChangeActiveIndex={handleChangeActiveIndex} folder={currentSet.folder} cards={currentSet.cards} />
+                !isLoading &&
+                currentSet && currentSet.cards && currentSet.cards.length &&
+                <StudySetSlider
+                    pageType="setPage"
+                    activeIndex={activeIndex}
+                    onChangeActiveIndex={handleChangeActiveIndex}
+                    folder={currentSet.folder}
+                    cards={currentSet.cards}
+                />
             }
 
-        </div>
+        </div >
     );
 }
 

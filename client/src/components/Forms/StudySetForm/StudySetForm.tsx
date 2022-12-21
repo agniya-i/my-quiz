@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 // import Input from '../../UI Components/Input/Input';
 // import { signUp } from '../../../actions/auth';
 import { useDispatch, useSelector } from 'react-redux';
-import CardForm from '../CardForm/CardForm';
+import SetFormItem from '../SetFormItem/SetFormItem';
 import { createCards } from '../../../actions/cards';
 import './StudySetForm.less';
 import { ICard } from '../../../types/types';
@@ -16,13 +16,12 @@ const initialState = [
     }
 ]
 
-
 const StudySetForm = () => {
     const currentSet = useAppSelector(state => state.set);
     const dispatch = useAppDispatch();
 
     const [formData, setFormData] = useState<ICard[]>(initialState);
-   
+
 
     function handleChange(index: number, item: React.ChangeEvent<HTMLInputElement>) {
         const name = (item.target as HTMLInputElement).name;
@@ -50,7 +49,7 @@ const StudySetForm = () => {
         <div className="set-form">
             <form onSubmit={handleSubmit}>
                 {
-                    formData.map((item, index) => <CardForm {...item} index={index} onChange={handleChange} />)
+                    formData.map((item, index) => <SetFormItem {...item} index={index} onChange={handleChange} />)
                 }
                 <div className="add-btn" onClick={handleAddCard}>
                     <span>+</span>
