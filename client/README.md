@@ -17,7 +17,8 @@ logic for working with folders;<br />
 edit sets and favourites lists; <br />
 
 #
-
+### Technologies
+React, Redux, Webpack, Less, axios
 
 ### Setup 
 1. Install dependenices `npm install`
