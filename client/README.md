@@ -3,13 +3,13 @@
 
 🙂 In progeress: 
 
-`Tech`: 
+`Tech`:  <br />
 switch to TS; <br />
 switch from Redux to Redux Toolkit;<br />
 get rid of boilerplate code; <br />
 refactor repeated code; <br />
 
-`Features`:
+`Features`: <br />
 validation and error handling; <br />
 pagination for lists; <br />
 filters for tables; <br />
