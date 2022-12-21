@@ -19,11 +19,11 @@ edit sets and favourites lists; <br />
 #
 
 
-#### Setup 
+### Setup 
 1. Install dependenices `npm install`
 2. Run project `npm run dev`
 
-#### Configuration
+### Configuration
 
 Set variables defined below in the `.env` file in the root project directory. 
 
