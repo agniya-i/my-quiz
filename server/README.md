@@ -1,6 +1,6 @@
-#### my-quiz
+### My-Quiz Server
 
-Server side for application
+Back end part of application.
 
 #### Technologies 
 Node.js, express.js, mongoose <br />
