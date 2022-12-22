@@ -6,5 +6,6 @@ export const hideModal = () => async (dispatch) => {
 }
 
 export const showModal = (data) => async (dispatch) => {
+    console.log('data', data);
     dispatch({ type: SHOW_MODAL, data });
 }

@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/useTypedSelector'
 import NewItemCard from '../../NewItemCard/NewItemCard';
 import CardListItem from '../../CardListItem/CardListItem';
 import './FolderList.less';
+import { IFolder } from '../../../types/types';
 
 const FolderList: FC = () => {
     const topics = useAppSelector(state => state.topics);
@@ -18,9 +19,22 @@ const FolderList: FC = () => {
         console.log('opn');
     }
 
+    const renderCardList = () => {
+        return <>
+            {
+                topics.map((folder: IFolder, i: number) => <CardListItem key={folder._id} type='folder' topic={folder} />)
+            }
+            <NewItemCard type='transparent' />
+        </>
+    }
+
     return (
         <div className="sets-list">
-            <NewItemCard link={"/createFolder"} />
+            {
+                topics && !!topics.length ?
+                    renderCardList() :
+                    <NewItemCard />
+            }
         </div>
     );
 }

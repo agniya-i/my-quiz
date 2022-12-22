@@ -46,14 +46,15 @@
         }
 
         &__options {
-            padding: 10px;
+            padding: 15px;
             width: 200px;
             background-color: #e0e0e0;
-            border-radius: 5px;
+            border-radius: 15px;
             margin-top: 5px;
             position: absolute;
             font-size: 14px;
             color: #252525;
+            animation: 0.1s slide-down ease-in-out;
 
             &-item {
                 margin-bottom: 10px;
@@ -89,7 +90,6 @@
                 filter: brightness(0) invert(1);
             }
 
-
         }
 
         &__user {
@@ -100,6 +100,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
 
             .user__icon {
                 width: 25px;
@@ -120,8 +121,8 @@
                 width: 200px;
                 padding: 10px;
                 border-radius: 4px;
-
                 font-family: 'Roboto Mono';
+                animation: 0.1s slide-down ease-in-out;
 
                 &-top {
                     color: #fff;
@@ -162,5 +163,15 @@
             border: 0;
         }
 
+    }
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-10%);
+    }
+
+    to {
+        transform: translateX(0);
     }
 }

@@ -1,0 +1,80 @@
+.card {
+  border-radius: 25px;
+  margin-bottom: 30px;
+  background-color: #fbfbfb;
+  border: 1px solid #ededed;
+  animation: 0.2s slide-down ease-in-out;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    background-color: #ededed;
+    border-radius: 25px 25px 0 0;
+
+    #up::after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url('../../../img/arrow.png');
+      background-size: cover;
+    }
+
+    #down::after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url('../../../img/arrow.png');
+      transform: rotate(180deg);
+      background-size: cover;
+    }
+
+    #remove::after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url('../../../img/cross.png');
+      transform: rotate(180deg);
+      background-size: cover;
+    }
+  }
+
+  &__options {
+    display: flex;
+
+    .icon {
+      cursor: pointer;
+    }
+
+
+  }
+
+  &__inputs {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+  }
+
+  & span {
+    width: 45%;
+  }
+
+
+
+
+
+}
+
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-10%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}

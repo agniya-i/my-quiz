@@ -1,18 +1,25 @@
-.new-item{
+.new-item {
     width: 25%;
     height: 150px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(246, 246, 246);
+    background-color: rgb(255, 255, 255);
     transition: transform 500ms;
     cursor: pointer;
-    &:hover{
+
+    &--transparent {
+        background-color: transparent;
+        width: fit-content;
+        padding: 0 1.5rem;
+    }
+
+    &:hover {
         transform: scale(1.05);
     }
 
-    div{
+    div {
         width: 40px;
         height: 40px;
         display: flex;
@@ -20,8 +27,8 @@
         align-items: center;
         border: 1px solid rgb(206, 206, 206);
         border-radius: 50%;
-      
-        span{
+
+        span {
             display: block;
             color: rgb(206, 206, 206);
         }

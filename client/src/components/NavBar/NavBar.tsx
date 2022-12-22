@@ -1,72 +1,85 @@
 
-import React, { FC, useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { FC, useState, useEffect, useRef, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import classNames from 'classnames';
-import logo from '../../img/icons/logo+.png';
-import userLogo from '../../img/icons/user-icon.png';
 import decode from 'jwt-decode';
 import { showModal } from '../../actions/modal';
 import { createTopic } from '../../actions/topics';
 import { createSet } from '../../actions/sets';
-import './style.less';
+import { useAppDispatch, useAppSelector } from '../../hooks/useTypedSelector';
+import useClickOutside from '../../hooks/useClickOutside';
+import logo from '../../img/icons/logo+.png';
+import userLogo from '../../img/icons/user-icon.png';
+import './NavBar.less';
 
 const NavBar: FC = () => {
     const location = useLocation();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigation = useNavigate();
+    const ref = useRef();
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    const [isMenuOpen, toggleMenu] = useState(false);
+    const [isMenuOpen, setMenuOpen] = useState(false);
     const [isCreateMenuOpen, toggleCreateMenu] = useState(false);
 
     useEffect(() => {
         const token = user?.token;
         if (token) {
             const decodedToken = decode(token);
-            if (decodedToken?.exp * 1000 < new Date().getTime()) handleLogout();
+
+            if ('exp' in decodedToken) {
+                if (decodedToken?.exp * 1000 < new Date().getTime()) handleLogout();
+
+            }
         }
 
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);
 
-    function toggleMenuMode() {
-        toggleMenu(!isMenuOpen);
+    const toggleMenuMode = () => {
+        console.log('f');
+        setMenuOpen(!isMenuOpen);
     }
 
-    function toggleCreateMenuMode() {
+    const toggleCreateMenuMode = () => {
         toggleCreateMenu(!isCreateMenuOpen);
     }
 
-    function handleLogout() {
+    const handleLogout = () => {
         dispatch({ type: 'LOGOUT' })
         navigation('/');
         setUser(null);
     }
-    function handleOpenFavourites() {
+    const handleOpenFavourites = () => {
         navigation('/favourites');
     }
 
-    function handleModalOpen(type: string, callback: () => void) {
+    const handleModalOpen = (type: string, callback) => {
         dispatch(showModal({
             modalType: 'CREATE_INSTANCE',
             modalProps: {
                 formTitle: `Create new ${type}`,
-                onSubmit: callback
+                //onSubmit: callback
             }
         }))
     }
 
-    const navClasses = classNames('navigation',
-        {
-            'navigation--set-page': location.pathname.includes('Set'),
-            // 'navigation--fav-page':location.pathname.includes('favourites')
-        }
-    )
+    // const handleCloseDropdown = useCallback(() => {
+    //     setMenuOpen(false)
+    // }, []);
+
+    // useClickOutside(ref, handleCloseDropdown);
+
+
+    // const navClasses = classNames('navigation',
+    //     {
+    //         'navigation--set-page': location.pathname.includes('set'),
+    //         'navigation--fav-page': location.pathname.includes('favourites')
+    //     }
+    // )
 
     return (
         <>
-            <div className={navClasses}>
+            <div className='navigation'>
                 <div className="navigation-logo">
                     <a href='/dashboard'>
                         <img src={logo} alt="logo" />
